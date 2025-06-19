@@ -61,7 +61,7 @@ export const veiculosController = {
   // Criar novo veículo
   async create(req, res) {
     try {
-      const { ClienteID, Modelo, Ano, Placa, Chassi, HistoricoServicos } = req.body;
+      const { ClienteID, Modelo, Ano, Placa, Chassi, historico_servicos } = req.body;
 
       if (!ClienteID || !Modelo || !Placa || !Chassi) {
         return res.status(400).json({ error: "ClienteID, Modelo, Placa e Chassi são obrigatórios" });
@@ -87,7 +87,7 @@ export const veiculosController = {
             ano: Ano,
             placa: Placa,
             chassi: Chassi,
-            historicoservicos: HistoricoServicos,
+            historico_servicos: historico_servicos,
           },
         ])
         // Aqui está a mudança crucial: 'clientes:cliente_id(nome)'
@@ -120,7 +120,7 @@ export const veiculosController = {
   async update(req, res) {
     try {
       const { id } = req.params;
-      const { ClienteID, Modelo, Ano, Placa, Chassi, HistoricoServicos } = req.body;
+      const { ClienteID, Modelo, Ano, Placa, Chassi, historico_servicos } = req.body;
 
       const { data: veiculoAtualizado, error: updateError } = await supabase
         .from("veiculos")
@@ -130,7 +130,7 @@ export const veiculosController = {
           ano: Ano,
           placa: Placa,
           chassi: Chassi,
-          historicoservicos: HistoricoServicos,
+          historico_servicos: historico_servicos,
         })
         .eq("veiculo_id", id)
         // Aqui está a mudança crucial: 'clientes:cliente_id(nome)'
