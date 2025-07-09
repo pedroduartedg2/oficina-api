@@ -13,6 +13,7 @@ import estoqueRoutes from "./routes/estoque.js";
 import servicosRoutes from "./routes/servicos.js";
 import faturasRoutes from "./routes/faturas.js";
 import pagamentosRoutes from "./routes/pagamentos.js";
+import authRoutes from "./routes/auth.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -82,6 +83,7 @@ app.use("/api/estoque", estoqueRoutes);
 app.use("/api/servicos", servicosRoutes);
 app.use("/api/faturas", faturasRoutes);
 app.use("/api/pagamentos", pagamentosRoutes);
+app.use("/api/auth", authRoutes);
 
 // Middleware de erro 404
 app.use(notFound);
